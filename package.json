@@ -1,0 +1,32 @@
+{
+  "name": "new-wa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "engines": {
+    "node": ">=14.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app",
+    "start": "node app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@adiwajshing/baileys": "4.1.0",
+    "@adiwajshing/keyed-db": "^0.2.4",
+    "@hapi/boom": "^10.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "http": "^0.0.1-security",
+    "node-cleanup": "^2.1.2",
+    "pino": "^8.3.0",
+    "qrcode": "^1.5.1",
+    "qrcode-terminal": "^0.12.0"
+  }
+}
