@@ -15,6 +15,8 @@ import __dirname from './helpers/dirname.js'
 // import __dirname from '../dirname2.js'
 import response from './helpers/response.js'
 
+const MAX_RETRIES = 5
+const RECONNECT_INTERVAL = 5000
 const sessions = new Map()
 const retries = new Map()
 
@@ -31,7 +33,7 @@ const isSessionFileExists = (name) => {
 }
 
 const shouldReconnect = (sessionId) => {
-    let maxRetries = parseInt(process.env.MAX_RETRIES ?? 0)
+    let maxRetries = parseInt(MAX_RETRIES)
     let attempts = retries.get(sessionId) ?? 0
 
     maxRetries = maxRetries < 1 ? 1 : maxRetries
@@ -126,7 +128,7 @@ const createSession = async (sessionId, isLegacy = false, res = null) => {
                 () => {
                     createSession(sessionId, isLegacy, res)
                 },
-                statusCode === DisconnectReason.restartRequired ? 0 : parseInt(process.env.RECONNECT_INTERVAL ?? 0)
+                statusCode === DisconnectReason.restartRequired ? 0 : parseInt(RECONNECT_INTERVAL)
             )
         }
 
